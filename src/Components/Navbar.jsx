@@ -95,17 +95,17 @@ const Navbar = () => {
         ) : (
           <div className="hidden lg:block space-x-1">
             <Link
-              to="/signin"
+              to="/login"
               className="btn btn-secondary rounded-xl font-extrabold"
             >
-              Login{" "}
+              Login
             </Link>
 
             <Link
-              to="signup"
+              to="/register"
               className=" btn btn-primary rounded-xl font-extrabold"
             >
-              Register{" "}
+              Register
             </Link>
           </div>
         )}

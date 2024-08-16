@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authproviders/AuthProviders";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -14,8 +16,7 @@ const Register = () => {
     const password = form.password.value;
     const photoURL = form.photoURL.value;
     const user = { name, email, photoURL };
-    console.log(user);
-
+    axiosPublic.post("/users", user);
     createUser(email, password)
       .then((result) => {
         console.log(result.user);

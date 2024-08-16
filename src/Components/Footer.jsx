@@ -1,27 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="footer bg-base-200 text-base-content p-10">
       <nav>
-        <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
+        <h6 className="footer-title">Links</h6>
+        <Link to="/" className="link link-hover">
+          Home
+        </Link>
+        <Link to="/about" className="link link-hover">
+          About
+        </Link>
+        <Link to="/products" className="link link-hover">
+          Products
+        </Link>
       </nav>
       <nav>
-        <h6 className="footer-title">Company</h6>
+        <h6 className="footer-title">Forum</h6>
         <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <Link to="/contact" className="link link-hover">
+          Contact
+        </Link>
       </nav>
       <nav>
         <h6 className="footer-title">Legal</h6>
         <a className="link link-hover">Terms of use</a>
         <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
       </nav>
       <form>
         <h6 className="footer-title">Newsletter</h6>
@@ -32,10 +37,10 @@ const Footer = () => {
           <div className="join">
             <input
               type="text"
-              placeholder="username@site.com"
+              placeholder="username@example.com"
               className="input input-bordered join-item"
             />
-            <button className="btn btn-primary join-item">Subscribe</button>
+            <button className="btn btn-primary join-item">Join</button>
           </div>
         </fieldset>
       </form>

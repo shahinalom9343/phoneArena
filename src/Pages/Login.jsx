@@ -2,10 +2,13 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authproviders/AuthProviders";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signIn } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+  const { signIn, googleSignIn } = useContext(AuthContext);
+  // Email password login
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +18,27 @@ const Login = () => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
       Swal.fire("Login Successful!");
+      navigate("/");
+    });
+  };
+
+  // google Login
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((result) => {
+      const userInfo = {
+        name: result.user?.displayName,
+        email: result.user?.email,
+        photoURL: result.user?.photoURL || result.user?.photourl,
+      };
+      // console.log(userInfo);
+      axiosPublic.post("/users", userInfo);
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Welcome to Phone Arena",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/");
     });
   };
@@ -66,7 +90,11 @@ const Login = () => {
         <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
       </div>
       <div className="flex justify-center space-x-4">
-        <button aria-label="Log in with Google" className="p-3 rounded-sm">
+        <button
+          aria-label="Log in with Google"
+          className="p-3 rounded-sm"
+          onClick={handleGoogleSignIn}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"

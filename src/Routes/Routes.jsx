@@ -7,6 +7,7 @@ import Contact from "../Pages/Contact";
 import Errorpage from "../Pages/Errorpage";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products></Products>,
+        element: (
+          <PrivateRoutes>
+            <Products></Products>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/contact",

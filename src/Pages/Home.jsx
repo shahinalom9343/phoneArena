@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import { FaCircleArrowDown } from "react-icons/fa6";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
@@ -52,9 +53,10 @@ const Home = () => {
   };
   return (
     <div>
-      <div className=" py-4 flex gap-8">
+      <div className=" py-4 flex justify-evenly">
+        {/* search section */}
         <div>
-          <span className="font-semibold text-green-400 ml-1">
+          <span className="font-semibold text-green-600 ml-1">
             Search the Products:
           </span>
           <form onSubmit={handleSearch}>
@@ -73,9 +75,10 @@ const Home = () => {
             </label>
           </form>
         </div>
+        {/* sorting section */}
         <div className="flex-col">
           <div>
-            <span className="font-semibold text-green-400 ml-1">
+            <span className="font-semibold text-green-600 ml-1">
               Sort By ::
             </span>
           </div>
@@ -84,6 +87,33 @@ const Home = () => {
               {asc ? "Price: High to Low" : "Price: Low to High"}
             </button>
           </div>
+        </div>
+        {/* filtering section */}
+        <div>
+          <div>
+            <span className="font-semibold text-green-600 ml-1">
+              Categories ::
+            </span>
+          </div>
+          <details className="dropdown">
+            <summary className="btn m-1">
+              <span className="mr-2">Category By</span>
+              <span>
+                <FaCircleArrowDown />
+              </span>
+            </summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <li>
+                <a>Brand Name</a>
+              </li>
+              <li>
+                <a>Category Name</a>
+              </li>
+              <li>
+                <a>Prize Range</a>
+              </li>
+            </ul>
+          </details>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

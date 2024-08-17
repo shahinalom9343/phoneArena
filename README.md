@@ -1,8 +1,8 @@
-# React + Vite
+# Phone Arena
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Phone Arena website is a simple Phone/Mobile Products based feature which contains:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Firebase CLI is used for user management i.e Registration and login
+2. Implemented Email-password and google login system
+3. Various mobile phone have been featured here
+4. Used various relevant hooks and pages on this platform

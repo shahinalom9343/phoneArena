@@ -52,10 +52,10 @@ const Home = () => {
     setSearch(searchText);
   };
   return (
-    <div>
-      <div className=" py-4 flex justify-evenly">
+    <div className="mt-8 md:mt-0">
+      <div className="py-2 md:py-4 grid  grid-cols-3 md:grid-cols-6 gap-3">
         {/* search section */}
-        <div>
+        <div className="col-span-2 md:col-span-2">
           <span className="font-semibold text-green-600 ml-1">
             Search the Products:
           </span>
@@ -76,7 +76,7 @@ const Home = () => {
           </form>
         </div>
         {/* sorting section */}
-        <div className="flex-col">
+        <div className="flex-col col-span-1 md:col-span-2">
           <div>
             <span className="font-semibold text-green-600 ml-1">
               Sort By ::
@@ -89,10 +89,10 @@ const Home = () => {
           </div>
         </div>
         {/* filtering section */}
-        <div>
+        <div className="col-span-3 md:col-span-2">
           <div>
             <span className="font-semibold text-green-600 ml-1">
-              Categories ::
+              Categories :
             </span>
           </div>
           <details className="dropdown">
@@ -120,7 +120,7 @@ const Home = () => {
         {product.map((singleProduct) => (
           <div
             key={singleProduct._id}
-            className="card bg-base-100 w-96 shadow-xl"
+            className="card bg-base-100 w-96 mx-auto shadow-xl"
           >
             <figure>
               <img

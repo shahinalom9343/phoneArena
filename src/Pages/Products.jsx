@@ -21,14 +21,15 @@ const Products = () => {
           <div key={product._id} className="card bg-base-100 w-96 shadow-xl">
             <figure>
               <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                className="h-64 w-11/12"
+                src={product.ProductImage}
                 alt={product.ProductName}
               />
             </figure>
             <div className="card-body">
               <h2 className="card-title">
                 {product.ProductName}
-                <div className="badge badge-secondary">NEW</div>
+                <div className="badge badge-secondary">{product.Ratings}</div>
               </h2>
               <p>{product.Description}</p>
               <div className="card-actions justify-start">

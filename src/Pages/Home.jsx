@@ -73,11 +73,17 @@ const Home = () => {
             </label>
           </form>
         </div>
-        <div>
-          <span className="font-semibold text-green-400 ml-1">Sort By ::</span>
-          <button onClick={() => setAsc(!asc)} className="btn btn-primary">
-            {asc ? "Price: High to Low" : "Price: Low to High"}
-          </button>
+        <div className="flex-col">
+          <div>
+            <span className="font-semibold text-green-400 ml-1">
+              Sort By ::
+            </span>
+          </div>
+          <div>
+            <button onClick={() => setAsc(!asc)} className="btn btn-primary">
+              {asc ? "Price: High to Low" : "Price: Low to High"}
+            </button>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -96,7 +102,9 @@ const Home = () => {
             <div className="card-body">
               <h2 className="card-title">
                 {singleProduct.ProductName}
-                <div className="badge badge-secondary">NEW</div>
+                <div className="badge badge-secondary">
+                  {singleProduct.Ratings}
+                </div>
               </h2>
               <p>{singleProduct.Description}</p>
               <div className="card-actions justify-start">

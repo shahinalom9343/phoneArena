@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Authproviders/AuthProviders";
+import logo from "../../public/icon.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -32,9 +33,9 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-purple-700 text-white font-semibold rounded-sm shadow-xl">
+    <div className="navbar bg-purple-700 text-white font-semibold rounded-sm shadow-2xl">
       <div className="navbar-start">
-        <div className="dropdown ">
+        <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,10 +59,15 @@ const Navbar = () => {
             {navbarItem}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl md:text-3xl">
-          <span className="text-pink-200">Phone</span>
-          <span className="text-green-200">Arena</span>
-        </a>
+        <div className=" hidden md:block -mr-2">
+          <img className="h-8 w-8 rounded-full" src={logo} alt="" />
+        </div>
+        <div>
+          <a className="btn btn-ghost text-xl md:text-3xl">
+            <span className="text-pink-200">Phone</span>
+            <span className="text-green-200">Arena</span>
+          </a>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navbarItem}</ul>

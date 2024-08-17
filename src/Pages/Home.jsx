@@ -53,7 +53,7 @@ const Home = () => {
   };
   return (
     <div className="mt-8 md:mt-0">
-      <div className="py-2 md:py-4 grid  grid-cols-3 md:grid-cols-6 gap-3">
+      <div className="py-2 md:py-4 grid  grid-cols-4 md:grid-cols-8 gap-3">
         {/* search section */}
         <div className="col-span-2 md:col-span-2">
           <span className="font-semibold text-green-600 ml-1">
@@ -76,7 +76,7 @@ const Home = () => {
           </form>
         </div>
         {/* sorting section */}
-        <div className="flex-col col-span-1 md:col-span-2">
+        <div className="flex-col col-span-2 md:col-span-2">
           <div>
             <span className="font-semibold text-green-600 ml-1">
               Sort By ::
@@ -89,33 +89,69 @@ const Home = () => {
           </div>
         </div>
         {/* filtering section */}
-        <div className="col-span-3 md:col-span-2">
+        <div className="col-span-2 md:col-span-2">
           <div>
             <span className="font-semibold text-green-600 ml-1">
-              Categories :
+              Filtered By :
             </span>
           </div>
           <details className="dropdown">
             <summary className="btn m-1">
-              <span className="mr-2">Category By</span>
+              <span className="mr-2">Brand Name</span>
               <span>
                 <FaCircleArrowDown />
               </span>
             </summary>
-            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <ul className="menu dropdown-content bg-orange-600 text-white rounded-box z-[1] w-52 p-2 shadow">
               <li>
-                <a>Brand Name</a>
+                <a>Samsung</a>
               </li>
               <li>
-                <a>Category Name</a>
+                <a>Oppo</a>
               </li>
               <li>
-                <a>Prize Range</a>
+                <a>Vivo</a>
+              </li>
+              <li>
+                <a>iphone</a>
+              </li>
+              <li>
+                <a>Motorola</a>
+              </li>
+              <li>
+                <a>Xiaomi</a>
+              </li>
+            </ul>
+          </details>
+        </div>
+        <div className="col-span-2 md:col-span-2">
+          <div>
+            <span className="font-semibold text-green-600 ml-1">
+              Filtered By :
+            </span>
+          </div>
+          <details className="dropdown">
+            <summary className="btn m-1">
+              <span className="mr-2">Category</span>
+              <span>
+                <FaCircleArrowDown />
+              </span>
+            </summary>
+            <ul className="menu dropdown-content bg-orange-600 text-white rounded-box z-[1] w-52 p-2 shadow">
+              <li>
+                <a>Android</a>
+              </li>
+              <li>
+                <a>Smartphone</a>
+              </li>
+              <li>
+                <a>Gaming</a>
               </li>
             </ul>
           </details>
         </div>
       </div>
+      <hr className="py-4" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {product.map((singleProduct) => (
           <div
@@ -148,7 +184,7 @@ const Home = () => {
               <div>
                 <div className="font-semibold">
                   <span className="text-orange-500">
-                    Product Creation Date:{" "}
+                    Product Creation Date:
                   </span>
                   {singleProduct.ProductCreationDateTime}
                 </div>

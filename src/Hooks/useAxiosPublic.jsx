@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosPulic = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://phone-arena-server-nine.vercel.app",
 });
 const useAxiosPublic = () => {
   return axiosPulic;

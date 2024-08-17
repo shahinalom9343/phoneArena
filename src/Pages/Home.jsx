@@ -23,7 +23,7 @@ const Home = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/products?pages=${currentPage}&size=${productsPerPage}&search=${search}&sort=${
+      `https://phone-arena-server-nine.vercel.app/products?pages=${currentPage}&size=${productsPerPage}&search=${search}&sort=${
         asc ? "asc" : "desc"
       }`
     )

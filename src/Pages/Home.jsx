@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 const Home = () => {
   const axiosPublic = useAxiosPublic();
   const [product, setProduct] = useState([]);
+  const [asc, setAsc] = useState(true);
+  const [search, setSearch] = useState("");
   const [productsPerPage, setProductsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(0);
   const { data: products = [] } = useQuery({
@@ -20,11 +22,13 @@ const Home = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/products?pages=${currentPage}&size=${productsPerPage}`
+      `http://localhost:5000/products?pages=${currentPage}&size=${productsPerPage}&search=${search}&sort=${
+        asc ? "asc" : "desc"
+      }`
     )
       .then((res) => res.json())
       .then((data) => setProduct(data));
-  }, [currentPage, productsPerPage]);
+  }, [currentPage, productsPerPage, search, asc]);
 
   const handleProductsPerPage = (e) => {
     const value = parseInt(e.target.value);
@@ -41,31 +45,40 @@ const Home = () => {
       setCurrentPage(currentPage + 1);
     }
   };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchText = e.target.search.value;
+    setSearch(searchText);
+  };
   return (
     <div>
-      <div className=" py-4">
-        <span className="font-semibold text-green-400 ml-1">
-          Search the Products:
-        </span>
-        <label className="input w-1/3 input-bordered flex items-center gap-2">
-          <input
-            type="text"
-            className="grow "
-            placeholder="Search in PhoneArena"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="h-4  opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </label>
+      <div className=" py-4 flex gap-8">
+        <div>
+          <span className="font-semibold text-green-400 ml-1">
+            Search the Products:
+          </span>
+          <form onSubmit={handleSearch}>
+            <label htmlFor="">
+              <input
+                type="text"
+                name="search"
+                className="py-3 rounded-lg px-1 border-2 border-amber-600"
+                placeholder="Search in PhoneArena"
+              />
+              <input
+                type="submit"
+                value="search"
+                className="btn bg-amber-600 text-white"
+              />
+            </label>
+          </form>
+        </div>
+        <div>
+          <span className="font-semibold text-green-400 ml-1">Sort By:</span>
+          <button onClick={() => setAsc(!asc)} className="btn btn-primary">
+            {asc ? "Price: High to Low" : "Price: Low to High"}
+          </button>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {product.map((singleProduct) => (
@@ -75,8 +88,9 @@ const Home = () => {
           >
             <figure>
               <img
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                src={singleProduct.ProductImage}
                 alt={singleProduct.ProductName}
+                className="h-64 w-full"
               />
             </figure>
             <div className="card-body">

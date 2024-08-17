@@ -74,7 +74,7 @@ const Home = () => {
           </form>
         </div>
         <div>
-          <span className="font-semibold text-green-400 ml-1">Sort By:</span>
+          <span className="font-semibold text-green-400 ml-1">Sort By ::</span>
           <button onClick={() => setAsc(!asc)} className="btn btn-primary">
             {asc ? "Price: High to Low" : "Price: Low to High"}
           </button>
